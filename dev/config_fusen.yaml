@@ -1,12 +1,12 @@
-flat_first.Rmd:
-  path: dev/flat_first.Rmd
+flat_get_info_data.Rmd:
+  path: dev/flat_get_info_data.Rmd
   state: active
-  R: R/first.R
-  tests: tests/testthat/test-first.R
-  vignettes: vignettes/minimal.Rmd
+  R: R/get_info_data.R
+  tests: tests/testthat/test-get_info_data.R
+  vignettes: vignettes/get-info-data.Rmd
   inflate:
-    flat_file: dev/flat_first.Rmd
-    vignette_name: Minimal
+    flat_file: dev/flat_get_info_data.Rmd
+    vignette_name: get info data
     open_vignette: true
     check: true
     document: true

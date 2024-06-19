@@ -21,7 +21,7 @@ get_mean_data <- function(mydata) {
   
   data_numerique <- mydata[sapply(mydata, is.numeric)]
   if (ncol(data_numerique) == 0) {
-    stop("Le jeu de donnees ne comporte pas de variables numeriques")
+    message("Le jeu de donnees ne comporte pas de variables numeriques")
   }
  
 means <-data_numerique |> 

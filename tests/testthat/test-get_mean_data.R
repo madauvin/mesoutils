@@ -9,7 +9,7 @@ test_that("Test avec un data frame contenant des variables numeriques et non num
 
 test_that("Test avec un data frame ne contenant que des variables non numeriques", {
   data_test <- data.frame(a = c("x", "y", "z"), b = c("foo", "bar", "baz"))
-  expect_error(get_mean_data(data_test), "Le jeu de donnees ne comporte pas de variables numeriques")
+  expect_message(get_mean_data(data_test), "Le jeu de donnees ne comporte pas de variables numeriques")
 })
 
 

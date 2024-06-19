@@ -6,7 +6,6 @@ Authors@R:
 Description: TD1 en autonomie.
 License: MIT + file LICENSE
 Suggests: 
-    dplyr,
     knitr,
     rmarkdown,
     testthat

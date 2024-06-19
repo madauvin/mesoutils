@@ -1,0 +1,6 @@
+"type","path","origin"
+"R","R/first.R","dev/flat_first.Rmd"
+"R","R/globals.R","No existing source path found."
+"R","R/mydataset.R","No existing source path found."
+"test","tests/testthat/test-first.R","dev/flat_first.Rmd"
+"vignette","vignettes/minimal.Rmd","dev/flat_first.Rmd"

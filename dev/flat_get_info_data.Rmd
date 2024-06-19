@@ -1,0 +1,83 @@
+---
+title: "flat_flat_get_info_data.Rmd empty"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r development, include=FALSE}
+library(testthat)
+library(tidyverse)
+```
+
+```{r development-load}
+# Load already included functions if relevant
+pkgload::load_all(export_all = FALSE)
+```
+
+# flat_get_info_data
+
+
+```{r development}
+data <- iris
+list("dimension" = dim(data),
+  "names"=  names(data))
+
+```
+
+```{r function-get_info_data}
+#' flat_get_info_data Title
+#'
+#'créer une fonction qui permettra d’avoir des informations sur un jeu de données passé en paramètre : dimensions et nom des colonnes dans une liste
+#' @return list
+#' @param df dataframe
+#' 
+#' @export
+#'
+#' @examples
+get_info_data <- function(df) {
+
+  if (!is.data.frame(df)) {
+    stop("L'objet fourni n'est pas un data frame")
+  }
+  
+  dimensions <- dim(df)
+  names <- colnames(df)
+  informations <- list(dimensions = dimensions, names = names)
+
+  return(informations)
+}
+
+```
+
+```{r examples-flat_get_info_data}
+get_info_data(iris)
+get_info_data(dplyr::starwars)
+```
+
+```{r tests-flat_get_info_data}
+test_that("on a bien une erreur si df n'est pas un dataframe", {
+  expect_error(
+    object = get_info_data(df = 3),
+    regexp = "L'objet fourni n'est pas un data frame"
+  )})
+
+  test_that("la sortie de la fonction est bien une liste", {resultats <- get_info_data(iris)
+   expect_true(is.list(resultats), info = "La sortie n'est pas une liste")
+  })
+      
+
+  test_that("la sortie de la fonction est bien une liste de deux éléments", {
+    resultats <- get_info_data(iris)
+    expect_equal(length(resultats), 2, info = "La liste ne contient pas deux éléments")
+})
+
+```
+
+
+```{r development-inflate, eval=FALSE}
+# Run but keep eval=FALSE to avoid infinite loop
+# Execute in the console directly
+fusen::inflate(flat_file = "dev/flat_get_info_data.Rmd", vignette_name = "get info data")
+```
+

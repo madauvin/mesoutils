@@ -1,0 +1,13 @@
+flat_get_info_data.Rmd:
+  path: dev/flat_get_info_data.Rmd
+  state: active
+  R: R/get_info_data.R
+  tests: tests/testthat/test-get_info_data.R
+  vignettes: vignettes/get-info-data.Rmd
+  inflate:
+    flat_file: dev/flat_get_info_data.Rmd
+    vignette_name: get info data
+    open_vignette: true
+    check: true
+    document: true
+    overwrite: ask

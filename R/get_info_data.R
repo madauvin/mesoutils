@@ -4,21 +4,21 @@
 #'
 #'créer une fonction qui permettra d’avoir des informations sur un jeu de données passé en paramètre : dimensions et nom des colonnes dans une liste
 #' @return list
-#' @param df dataframe
+#' @param mydata dataframe
 #' 
 #' @export
 #'
 #' @examples
 #' get_info_data(iris)
 #' get_info_data(dplyr::starwars)
-get_info_data <- function(df) {
+get_info_data <- function(mydata) {
 
-  if (!is.data.frame(df)) {
-    stop("L'objet fourni n'est pas un data frame")
+  if (!is.data.frame(mydata)) {
+    stop("mydata is not a data frame")
   }
   
-  dimensions <- dim(df)
-  names <- colnames(df)
+  dimensions <- dim(mydata)
+  names <- colnames(mydata)
   informations <- list(dimensions = dimensions, names = names)
 
   return(informations)

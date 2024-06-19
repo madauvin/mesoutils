@@ -19,7 +19,7 @@ fusen::fill_description(
     Title = "Mes outils",
     Description = "TD1 en autonomie",
     `Authors@R` = c(
-      person("John", "Doe", email = "magali.dauvin@gmail.com", role = c("aut", "cre"))
+      person("Magali", "Dauvin", email = "magali.dauvin@gmail.com", role = c("aut", "cre"))
     )
   )
 )

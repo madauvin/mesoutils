@@ -2,8 +2,8 @@
 
 test_that("on a bien une erreur si df n'est pas un dataframe", {
   expect_error(
-    object = get_info_data(df = 3),
-    regexp = "L'objet fourni n'est pas un data frame"
+    object = get_info_data(mydata = 3),
+    regexp = "mydata is not a data frame"
   )})
 
   test_that("la sortie de la fonction est bien une liste", {resultats <- get_info_data(iris)

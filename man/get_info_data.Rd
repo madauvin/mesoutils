@@ -4,10 +4,10 @@
 \alias{get_info_data}
 \title{flat_get_info_data Title}
 \usage{
-get_info_data(df)
+get_info_data(mydata)
 }
 \arguments{
-\item{df}{dataframe}
+\item{mydata}{dataframe}
 }
 \value{
 list

@@ -1,0 +1,105 @@
+---
+title: "flat_get_mean_data.Rmd"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r development, include=FALSE}
+library(testthat)
+library(dplyr)
+```
+
+```{r development-load}
+# Load already included functions if relevant
+pkgload::load_all(export_all = FALSE)
+```
+
+# get_mean_data
+
+
+```{r function-get_mean_data}
+#' get_mean_data Title
+#' Permet d'obtenir la moyenne de toutes les colonnes numeriques
+#' @return 1
+#'
+#' @param mydata dataframe
+#'
+#' @export
+#' @importFrom dplyr across 
+#' @importFrom dplyr summarize
+#' @importFrom dplyr everything
+#' @examples
+
+get_mean_data <- function(mydata) {
+  if (!is.data.frame(mydata)) {
+    stop("L'objet fourni n'est pas un data frame")
+  }
+  
+  data_numerique <- mydata[sapply(mydata, is.numeric)]
+  if (ncol(data_numerique) == 0) {
+    message("Le jeu de donnees ne comporte pas de variables numeriques")
+  }
+ 
+means <-data_numerique |> 
+    summarize(across(
+      everything(),
+      \(x) mean(x, na.rm = TRUE)
+      ) 
+      )
+  return(means)
+}
+
+
+
+
+```
+
+```{r examples-get_mean_data}
+get_mean_data(iris)
+
+```
+
+```{r tests-get_mean_data}
+test_that("Test avec un data frame contenant des variables numeriques et non numeriques", {
+  data_test <- data.frame(a = 1:3, b = c("x", "y", "z"), c = 4:6)
+  result <- get_mean_data(data_test)
+  expect_equal(result$a, mean(1:3))
+  expect_equal(result$c, mean(4:6))
+})
+
+test_that("Test avec un data frame ne contenant que des variables non numeriques", {
+  data_test <- data.frame(a = c("x", "y", "z"), b = c("foo", "bar", "baz"))
+  expect_message(get_mean_data(data_test), "Le jeu de donnees ne comporte pas de variables numeriques")
+})
+
+
+
+test_that("Test avec un data frame contenant des valeurs NA", {
+  data_test <- data.frame(a = c(1, 2, NA), b = c(4, 5, 6))
+  result <- get_mean_data(data_test)
+  expect_equal(result$a, mean(c(1, 2), na.rm = TRUE))
+  expect_equal(result$b, mean(c(4, 5, 6), na.rm = TRUE))
+})
+
+test_that("Test avec un objet qui n'est pas un data frame", {
+  data_test <- list(a = 1:3, b = 4:6)
+  expect_error(get_mean_data(data_test), "L'objet fourni n'est pas un data frame")
+})
+
+test_that("Test avec un data frame contenant des variables numeriques avec des moyennes connues", {
+  data_test <- data.frame(a = c(1, 2, 3), b = c(4, 5, 6))
+  result <- get_mean_data(data_test)
+  expect_equal(result$a, 2)
+  expect_equal(result$b, 5)
+})
+
+```
+
+
+```{r development-inflate, eval=FALSE}
+# Run but keep eval=FALSE to avoid infinite loop
+# Execute in the console directly
+fusen::inflate(flat_file = "dev/flat_get_mean_data.Rmd", vignette_name = "get_mean_data")
+```
+

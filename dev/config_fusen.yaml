@@ -11,3 +11,16 @@ flat_get_info_data.Rmd:
     check: true
     document: true
     overwrite: ask
+flat_get_mean_data.Rmd:
+  path: dev/flat_get_mean_data.Rmd
+  state: active
+  R: R/get_mean_data.R
+  tests: tests/testthat/test-get_mean_data.R
+  vignettes: vignettes/get_mean_data.Rmd
+  inflate:
+    flat_file: dev/flat_get_mean_data.Rmd
+    vignette_name: get_mean_data
+    open_vignette: true
+    check: true
+    document: true
+    overwrite: ask
